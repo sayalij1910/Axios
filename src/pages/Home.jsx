@@ -9,9 +9,9 @@ const Home = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get("https://fakestoreapi.com/products")
+    axios.get("https://dummyjson.com/products")
       .then((response) => {
-        setProducts(response.data);
+        setProducts(response.data.products); 
         setLoading(false);
       })
       .catch((error) => {
@@ -44,14 +44,13 @@ const Home = () => {
             key={product.id}
             className="bg-white border rounded-lg shadow-md p-5 flex flex-col justify-between transition-transform transform hover:scale-105 hover:shadow-xl"
           >
-            <img src={product.image} alt={product.title} className="w-full h-48 object-cover rounded-md" />
+            <img src={product.thumbnail} alt={product.title} className="w-full h-48 object-cover rounded-md" />
             <h2 className="text-lg font-semibold mt-3 text-gray-800">{product.title}</h2>
             <p className="text-gray-600 text-sm">{product.category}</p>
 
-           
             <div className="flex items-center text-lg">
-              {renderStars(product.rating.rate)}
-              <p className="text-gray-500 text-sm ml-2">({product.rating.count} reviews)</p>
+              {renderStars(product.rating)}
+              <p className="text-gray-500 text-sm ml-2">({product.stock} in stock)</p>
             </div>
 
             <p className="text-green-600 font-bold text-xl mt-2">${product.price}</p>

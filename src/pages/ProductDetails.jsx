@@ -9,7 +9,7 @@ const ProductDetails = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get(`https://fakestoreapi.com/products/${id}`)
+    axios.get(`https://dummyjson.com/products/${id}`)
       .then((response) => {
         setProduct(response.data);
         setLoading(false);
@@ -27,7 +27,11 @@ const ProductDetails = () => {
   return (
     <div className="p-8 max-w-4xl mx-auto">
       <h2 className="text-3xl font-bold mb-4">{product.title}</h2>
-      <img src={product.image} alt={product.title} className="w-64 h-64 object-contain mx-auto mb-4" />
+      <img 
+  src={product.images?.[0]} 
+  alt={product.title} 
+  className="w-64 h-64 object-contain mx-auto mb-4" 
+/>
       <p className="text-lg text-gray-700">{product.description}</p>
       <p className="text-xl font-semibold text-green-600 mt-2">${product.price}</p>
     </div>
