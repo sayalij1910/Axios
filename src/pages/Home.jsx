@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import banner from "../assets/baner.jpg";
+import banner from "../assets/Banner-1.webp";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
